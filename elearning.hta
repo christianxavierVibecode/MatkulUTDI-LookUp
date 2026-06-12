@@ -1,0 +1,275 @@
+<html>
+  <head>
+    <title>E-Learning Matkul</title>
+
+    <hta:application 
+    id="app"
+    icon="icon.ico"
+    applicationName="LabFlow_Elearning"
+    border="thin"
+    borderStyle="normal"
+    caption="yes"
+    maximizeButton="yes"
+    minimizeButton="yes"
+    showInTaskbar="yes"
+    windowState="normal"
+    innerBorder="no"
+    navigable="no"
+    contextMenu="no"
+    selection="no"
+    scroll="yes"
+/>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        margin: 20px;
+        overflow: auto;
+      }
+
+      h1 {
+        margin-bottom: 10px;
+      }
+
+      #searchBox {
+        width: 300px;
+        padding: 8px;
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+
+      .card {
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 15px;
+        margin-bottom: 0; /* Jarak sudah diatur oleh 'gap' di container */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opsional: agar lebih mirip contoh */
+      }
+
+      #cardContainer {
+        display: grid; /* Mengaktifkan mode grid */
+        grid-template-columns: repeat(
+          auto-fill,
+          minmax(250px, 1fr)
+        ); /* Membuat kolom otomatis */
+        gap: 20px; /* Memberikan jarak antar card */
+        padding-top: 10px;
+      }
+
+      .title {
+        font-weight: bold;
+        margin-bottom: 8px;
+        text-transform: capitalize;
+      }
+
+      .btn {
+        padding: 6px 10px;
+        background: #0078d7;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        display: inline-block;
+      }
+      </style>
+
+<script>
+  // ===== DATA ARRAY OBJECT =====
+  var data = [  
+        {
+          "url": "https://elearning.utdi.ac.id/course/view.php?id=3559",
+          "title":
+            "PRAKTIKUM STRUKTUR DATA IF-2 Genap 2025 (Femi Dwi Astuti, S.Kom., M.Cs.) - SIF25206P",
+          "localpath":
+            "C:\\CostumFiles\\KULIAH\\Semester 2\\9. PRAKTIKUM STRUKTUR DATA"
+        },
+        {
+          "url": "https://elearning.utdi.ac.id/course/view.php?id=3556",
+          "title":
+            "PRAKTIKUM STATISTIKA IF-2 Genap 2025 (Ilham Rais Arvianto, S.Pd., M.Pd.) - SIF25205P",
+          "localpath":
+            "C:\\CostumFiles\\KULIAH\\Semester 2\\7. PRAKTIKUM STATISTIKA"
+        },
+        {
+          "url": "https://elearning.utdi.ac.id/course/view.php?id=3548",
+          "title":
+            "PRAKTIKUM PEMROGRAMAN SISI FRONT-END IF-2 Genap 2025 (Thomas Edyson Tarigan, S.Kom., M.Cs.) - SIF25203P",
+          "localpath":
+            "C:\\CostumFiles\\KULIAH\\Semester 2\\5. PRAKTIKUM PEMROGRAMAN SISI FROND END"
+        },
+        {
+          "url": "https://elearning.utdi.ac.id/course/view.php?id=3370",
+          "title": "STRUKTUR DATA IF-2 Genap 2025 Femi Dwi Astuti - SIF25206T",
+          "localpath": "C:\\CostumFiles\\KULIAH\\Semester 2\\10. STRUKTUR DATA"
+        },
+        {
+          "url": "https://elearning.utdi.ac.id/course/view.php?id=3367",
+          "title": "STATISTIKA IF-2 Genap 2025 Ilham Rais Arvianto - SIF25205T",
+          "localpath": "C:\\CostumFiles\\KULIAH\\Semester 2\\8. STATISTIKA"
+        },
+        {
+          "url": "https://elearning.utdi.ac.id/course/view.php?id=3359",
+          "title":
+            "SISTEM BASIS DATA IF-2 Genap 2025 Femi Dwi Astuti - SIF25204T",
+          "localpath":
+            "C:\\CostumFiles\\KULIAH\\Semester 2\\11. SISTEM BASIS DATA"
+        },
+        {
+          "url": "https://elearning.utdi.ac.id/course/view.php?id=3348",
+          "title":
+            "PEMROGRAMAN SISI FRONT-END IF-2 Genap 2025 Thomas Edyson Tarigan - SIF25203T",
+          "localpath":
+            "C:\\CostumFiles\\KULIAH\\Semester 2\\6. PEMROGRAMAN SISI FROND END"
+        },
+        {
+          "url": "https://elearning.utdi.ac.id/course/view.php?id=3342",
+          "title": "PANCASILA IF-2 Genap 2025 I Made Worda Negara - UIF25002T",
+          "localpath": "C:\\CostumFiles\\KULIAH\\Semester 2\\4. PANCASILA"
+        },
+        {
+          "url": "https://elearning.utdi.ac.id/course/view.php?id=3336",
+          "title":
+            "MATEMATIKA KOMPUTASI IF-2 Genap 2025 Erna Hudianti P. - SIF25202T",
+          "localpath":
+            "C:\\CostumFiles\\KULIAH\\Semester 2\\3. MATEMATIKA KOMPUTASI"
+        },
+        {
+          "url": "https://elearning.utdi.ac.id/course/view.php?id=3330",
+          "title":
+            "JARINGAN NIRKABEL IF-2 Genap 2025 Kuindra Iriyanta - SIF25201T",
+          "localpath":
+            "C:\\CostumFiles\\KULIAH\\Semester 2\\2. JARINGAN NIRKABEL"
+        },
+        {
+          "url": "https://elearning.utdi.ac.id/course/view.php?id=3302",
+          "title":
+            "BAHASA INGGRIS 1 IF-2 Genap 2025 Agnes Nora Eko Wahyu Utami - UIF25006T",
+          "localpath": "C:\\CostumFiles\\KULIAH\\Semester 2\\1. BAHASA INGGRIS"
+        }
+      ];
+
+      // ===== AUTO BINDING =====
+      function focusSearchAndType(e) {
+    e = e || window.event;
+    var key = e.keyCode || e.which;
+
+    // 1. ABAIKAN TOMBOL NAVIGASI UTAMA
+    // 9 = Tab, 13 = Enter, 32 = Space, 16-18 = Shift/Ctrl/Alt, 37-40 = Arrow Keys
+    if (key === 9 || key === 13 || key === 32 || key === 16 || key === 17 || key === 18 || (key >= 37 && key <= 40)) {
+        return; 
+    }
+
+    // 2. ABAIKAN JIKA USER SEDANG BERADA DI DALAM TOMBOL
+    var activeTag = document.activeElement.tagName.toLowerCase();
+    if (activeTag === "button") {
+        return; 
+    }
+
+    // 3. SELEBIHNYA, ARAHKAN KE SEARCHBOX
+    var input = document.getElementById("searchBox");
+    if (document.activeElement !== input) {
+        input.focus();
+    }
+}
+
+      function handleShortcuts(e) {
+          e = e || window.event;
+          var key = e.keyCode || e.which;
+
+          // Deteksi CTRL + Q
+          if (e.ctrlKey && (key === 81 || key === 113)) { // 81 adalah 'q'
+              window.close();
+          }
+      }
+
+      // Tambahkan ke event listener
+      document.onkeydown = function(e) {
+          handleShortcuts(e);
+          focusSearchAndType(e);
+      };
+
+      // ===== OPEN FUNCTIONS =====
+      function bukaDefaultBrowser(url) {
+        var shell = new ActiveXObject("WScript.Shell");
+        shell.Run(url);
+      }
+
+      function bukaFolder(path) {
+        var shell = new ActiveXObject("WScript.Shell");
+        // Menambahkan kutipan agar path dengan spasi bisa terbaca
+        shell.Run('explorer.exe "' + path + '"');
+      }
+
+      // ===== RENDER CARD =====
+      function renderCards(keyword) {
+        var container = document.getElementById("cardContainer");
+        container.innerHTML = "";
+
+        for (var i = 0; i < data.length; i++) {
+          var matkulTitle = data[i].title;
+          if (
+            !keyword ||
+            matkulTitle.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
+          ) {
+            var card = document.createElement("div");
+            card.className = "card";
+
+            var title = document.createElement("div");
+            title.className = "title";
+            title.innerText = matkulTitle;
+
+            // Tombol E-Learning
+            var btn = document.createElement("button");
+            btn.className = "btn";
+            btn.innerText = "Buka E-Learning";
+            btn.onclick = (function (u) {
+              return function () {
+                bukaDefaultBrowser(u);
+              };
+            })(data[i].url);
+
+            // Tombol Folder
+            var btn2 = document.createElement("button");
+            btn2.className = "btn";
+            btn2.style.marginTop = "5px";
+            btn2.innerText = "Buka Folder";
+            btn2.onclick = (function (p) {
+              return function () {
+                bukaFolder(p);
+              };
+            })(data[i].localpath);
+
+            card.appendChild(title);
+            card.appendChild(btn);
+            card.appendChild(btn2);
+            container.appendChild(card);
+          }
+        }
+      }
+
+      function liveSearch() {
+        var input = document.getElementById("searchBox").value;
+        renderCards(input);
+      }
+
+      window.onload = function () {
+        window.moveTo(0, 0);
+        window.resizeTo(screen.availWidth, screen.availHeight);
+        renderCards("");
+        document.getElementById("searchBox").onkeyup = liveSearch;
+      };
+    </script>
+  </head>
+
+  <body>
+    <h1>Daftar Mata Kuliah</h1>
+    <input type="text" id="searchBox" placeholder="Cari mata kuliah..." />
+
+    <div id="cardContainer"></div>
+    <div id="cardContainer2"></div>
+  </body>
+</html>
