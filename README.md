@@ -1,6 +1,6 @@
 # MatkulUTDI-LookUp 📚
 
-**MatkulUTDI-LookUp** adalah aplikasi desktop sederhana untuk lookup dan manajemen mata kuliah semester 2 di Universitas Teknokrat Digital Indonesia (UTDI). Aplikasi ini memudahkan mahasiswa untuk mengakses e-learning dan folder materi kuliah dengan cepat melalui antarmuka pencarian yang responsif.
+**MatkulUTDI-LookUp** adalah aplikasi desktop sederhana untuk lookup dan manajemen mata kuliah semester 2 di Universitas Teknologi Digital Indonesia (UTDI). Aplikasi ini memudahkan mahasiswa untuk mengakses e-learning dan folder materi kuliah dengan cepat melalui antarmuka pencarian yang responsif.
 
 ## 🎯 Fitur Utama
 
